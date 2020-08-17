@@ -1,0 +1,20 @@
+{
+    "devisionCode": 28049,
+    "numberOfDays": 7,
+    "costOfImpact": 90,
+    "submittedCost": 89,
+    "widgets": [
+        {
+            "name": "About.pdf",
+            "numberOfPages": 8,
+            "sizeInMb": 9,
+            "tagName": "cover"
+        },
+        {
+            "name": "About.pdf",
+            "numberOfPages": 3,
+            "sizeInMb": 28,
+            "tagName": "backup"
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+@import "../../variables";
+
+.change-order-detail {
+    background-color: $white;
+    border-radius: 0.5rem;
+    box-shadow: 0.2rem 0.2rem 0.7rem $light-grey;
+    color: $grey;
+    height: 10rem;
+    padding: 1.6rem;
+    transition: all 0.2s ease-in-out;
+
+    .detail-title {
+        font-weight: 400;
+        text-transform: capitalize;
+    }
+
+    .actions {
+        cursor: pointer;
+        float: right;
+
+        .material-icons,
+        div > .material-icons {
+            vertical-align: initial;
+            font-size: 1.8rem;
+        }
+
+        .material-icons:hover,
+        div > .material-icons:hover {
+            opacity: 0.7;
+        }
+    }
+}
+
+.change-order-detail:hover {
+    transform: translateY(-0.1rem);
+    box-shadow: 0.4rem 0.6rem 0.7rem $light-grey;
+}
+
+.edit-mode {
+    background-color: $primary;
+    color: $white;
+}

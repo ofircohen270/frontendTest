@@ -1,0 +1,30 @@
+@import '../../variables';
+
+.main-content {
+    display: inline-block;
+    width: 75%;
+    min-height: 100vh;
+    padding: 3rem;
+    position: relative;
+
+    .bottom-buttons {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 2rem;
+
+        .material-icons {
+            font-size: inherit;
+        }
+    }
+}
+
+.sidebar {
+    display: inline-block;
+    width: 25%;
+    position: absolute;
+    min-height: 100vh;
+    background-color: $primary;
+    color: $white;
+    padding: 1.6rem;
+}

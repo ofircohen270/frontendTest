@@ -1,0 +1,29 @@
+@import "../../variables";
+
+.widgets-content {
+    padding: 1.6rem;
+    transition: all 0.2s ease-in-out;
+
+    .widgets-title {
+        text-transform: capitalize;
+        font-weight: 700;
+        font-size: 2rem;
+
+        .widgets-fold-icon {
+            font-size: 2rem;
+            float: right;
+            cursor: pointer;
+        }
+    }
+}
+
+.unfolded {
+    color: $primary;
+    background-color: $white;
+    border-radius: 0.5rem;
+}
+
+.folded {
+    color: $white;
+    background-color: transparent;
+}
