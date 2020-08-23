@@ -1,37 +1,30 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 
 import { Widget } from '../../types'
 
 import './widget.scss'
 
-type Props = {
-    widget: Widget
-}
-
-
 /**
  * Represents one widget of Change order
  */
-class WidgetComponent extends React.Component<Props> {
+const WidgetComponent: FunctionComponent<{ widget: Widget }> = ({ widget }) => {
 
-    render() {
-        return (
-            <div className="widget">
-                <div>
-                    <span className="widget-name">{this.props.widget.name}</span>
-                    <span className="widget-tag">{this.props.widget.tagName}</span>
-                </div>
-                <div className="widget-details">
-                    <span className="widget-detail">
-                        {this.props.widget.numberOfPages} pages
-                    </span>
-                    <span className="widget-detail">
-                        {this.props.widget.sizeInMb} Mb
-                    </span>
-                </div>
+    return (
+        <div className="widget">
+            <div>
+                <span className="widget-name">{widget.name}</span>
+                <span className="widget-tag">{widget.tagName}</span>
             </div>
-        )
-    }
+            <div className="widget-details">
+                <span className="widget-detail">
+                    {widget.numberOfPages} pages
+                    </span>
+                <span className="widget-detail">
+                    {widget.sizeInMb} Mb
+                    </span>
+            </div>
+        </div>
+    )
 }
 
 

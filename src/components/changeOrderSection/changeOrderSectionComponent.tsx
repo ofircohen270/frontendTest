@@ -1,60 +1,44 @@
-import React from 'react'
+import React, { useState, FunctionComponent } from 'react'
 
 import { ChangeOrderSection } from '../../types'
 import ChangeOrderDetailComponent from '../changeOrderDetail/changeOrderDetailComponent'
 
 import './changeOrderSection.scss'
 
-type Props = {
-    section: ChangeOrderSection
-}
-
-type State = {
-    folded: Boolean
-}
-
 /**
  * Represents one section of Change order. Each section contains details
  */
-class ChangeOrderSectionComponent extends React.Component<Props, State> {
+const ChangeOrderSectionComponent: FunctionComponent<{ section: ChangeOrderSection }> = ({ section }) => {
+    const [folded, setFolded] = useState<boolean>(false)
 
-    constructor(props: Props) {
-        super(props)
-        this.state = {
-            folded: false
-        }
-    }
+    const fold = () => setFolded(true)
+    const unfold = () => setFolded(false)
 
-    fold() { this.setState({ folded: true }) }
-
-    unfold() { this.setState({ folded: false }) }
-
-    render() {
-        return (
-            <div>
-                <div className="section-title">
-                    {
-                        this.state.folded ?
-                            <i className="material-icons fold-icon" onClick={this.unfold.bind(this)}>keyboard_arrow_down</i>
-                            : <i className="material-icons fold-icon" onClick={this.fold.bind(this)}>keyboard_arrow_up</i>
-                    }
-                    {this.props.section.title}
-                </div>
+    return (
+        <div>
+            <div className="section-title">
                 {
-                    !this.state.folded && (
-                        <div className="flex-layout">
-                            {this.props.section.details.map((detail, key) => (
-                                <div key={key} className="flex-child">
-                                    <ChangeOrderDetailComponent
-                                        {...{ detail }}>
-                                    </ChangeOrderDetailComponent>
-                                </div>
-                            ))}
-                        </div>)
+                    folded ?
+                        <i className="material-icons fold-icon" onClick={unfold}>keyboard_arrow_up</i>
+                        : <i className="material-icons fold-icon" onClick={fold}>keyboard_arrow_down</i>
                 }
+                {section.title}
             </div>
-        )
-    }
+            {
+                !folded && (
+                    <div className="flex-layout">
+                        {section.details.map((detail, key) => (
+                            <div key={key} className="flex-child">
+                                <ChangeOrderDetailComponent
+                                    {...{ detail }}>
+                                </ChangeOrderDetailComponent>
+                            </div>
+                        ))}
+                    </div>)
+            }
+        </div>
+    )
+
 }
 
 

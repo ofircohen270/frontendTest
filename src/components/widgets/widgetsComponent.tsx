@@ -1,59 +1,42 @@
-import React from 'react'
+import React, { FunctionComponent, useState } from 'react'
 
 import { Widget } from '../../types'
 import WidgetComponent from '../widget/widgetComponent'
 
 import './widgets.scss'
 
-type Props = {
-    widgets: Widget[]
-}
-
-type State = {
-    folded: Boolean
-}
-
-
 /**
  * Contains the widgest of the Check Order
  */
-class WidgetsComponent extends React.Component<Props, State> {
+const WidgetsComponent: FunctionComponent<{ widgets: Widget[] }> = ({ widgets }) => {
 
-    constructor(props: Props) {
-        super(props)
-        this.state = {
-            folded: false
-        }
-    }
+    const [folded, setFolded] = useState<boolean>(false)
 
-    fold() { this.setState({ folded: true }) }
+    const fold = () => setFolded(true)
+    const unfold = () => setFolded(false)
 
-    unfold() { this.setState({ folded: false }) }
-
-    render() {
-        return (
-            <div>
-                <div className={"widgets-content " + (this.state.folded ? "folded" : "unfolded")}>
-                    <div className="widgets-title">
-                        <i className="material-icons">folder_open</i>
+    return (
+        <div>
+            <div className={"widgets-content " + (folded ? "folded" : "unfolded")}>
+                <div className="widgets-title">
+                    <i className="material-icons">folder_open</i>
                         Reference
                         {
-                            this.state.folded ?
-                                <i className="material-icons widgets-fold-icon" onClick={this.unfold.bind(this)}>keyboard_arrow_down</i>
-                                : <i className="material-icons widgets-fold-icon" onClick={this.fold.bind(this)}>keyboard_arrow_up</i>
-                        }
-                    </div>
-                    {!this.state.folded && this.props.widgets && (
-                        <div>
-                            {this.props.widgets.map((widget, key) => (
-                                <WidgetComponent {...{widget, key}}></WidgetComponent>
-                            ))}
-                        </div>
-                    )}
+                        folded ?
+                            <i className="material-icons widgets-fold-icon" onClick={unfold}>keyboard_arrow_down</i>
+                            : <i className="material-icons widgets-fold-icon" onClick={fold}>keyboard_arrow_up</i>
+                    }
                 </div>
+                {!folded && widgets && (
+                    <div>
+                        {widgets.map((widget: Widget, key: number) => (
+                            <WidgetComponent {...{ widget, key }}></WidgetComponent>
+                        ))}
+                    </div>
+                )}
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 
